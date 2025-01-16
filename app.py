@@ -19,6 +19,10 @@ import yaml
 
 
 #load model
+uploaded_file = st.file_uploader("Upload Model", type=["pkl"])
+if uploaded_file is not None:
+    rfc_model_rf_rfe = joblib.load(uploaded_file)
+  
 rfc_model_rf_rfe = joblib.load("rfc_model_rf_rfe.pkl")
 
 #list of features
