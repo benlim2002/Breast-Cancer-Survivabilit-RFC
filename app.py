@@ -21,7 +21,7 @@ from io import BytesIO
 
 
 
-rfc_model_rf_rfe = joblib.load('models/ufc_model_rf_rfe.pkl')
+rfc_model_rf_rfe = joblib.load('ufc_model_rf_rfe.pkl')
 
 #list of features
 selected_features = ['age_at_diagnosis', 'nottingham_prognostic_index',
