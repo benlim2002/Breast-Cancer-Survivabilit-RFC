@@ -26,14 +26,15 @@ github_url = "https://github.com/benlim2002/Breast-Cancer-Survivabilit-RFC/blob/
 # Fetch the .pkl file from GitHub
 response = requests.get(github_url)
 
-try:
-    model_data = BytesIO(response.content)  # Fetching from GitHub
-    logging.debug("Model data fetched successfully.")
-    
-    rfc_model_rf_rfe = joblib.load(model_data)
-    logging.debug("Model loaded successfully.")
-except Exception as e:
-    logging.error(f"Error loading the model: {e}")
+if response.status_code == 200:
+    model_data = BytesIO(response.content)
+    try:
+        rfc_model_rf_rfe = joblib.load(model_data)
+        st.success("Model loaded successfully!")
+    except Exception as e:
+        st.error(f"Error loading the model: {e}")
+else:
+    st.error("Failed to download the model file from GitHub.")
 
 #list of features
 selected_features = ['age_at_diagnosis', 'nottingham_prognostic_index',
