@@ -20,6 +20,13 @@ import requests
 from io import BytesIO
 
 
+try:
+    model_data = joblib.load('rfc_model_rf_rfe.pkl')
+    logging.info("Model loaded successfully!")
+except KeyError as e:
+    logging.error(f"KeyError occurred: {e}")
+    raise
+
 # GitHub raw file URL (make sure to replace with your own URL)
 github_url = "https://github.com/benlim2002/Breast-Cancer-Survivabilit-RFC/blob/main/%20rfc_model_rf_rfe.pkl"
 
