@@ -20,21 +20,8 @@ import requests
 from io import BytesIO
 
 
-# GitHub raw file URL (make sure to replace with your own URL)
-github_url = "https://github.com/benlim2002/Breast-Cancer-Survivabilit-RFC/blob/main/rfc_model_rf_rfe.pkl"
 
-# Fetch the .pkl file from GitHub
-response = requests.get(github_url)
-
-if response.status_code == 200:
-    model_data = BytesIO(response.content)
-    try:
-        rfc_model_rf_rfe = joblib.load(model_data)
-        st.success("Model loaded successfully!")
-    except Exception as e:
-        st.error(f"Error loading the model: {e}")
-else:
-    st.error("Failed to download the model file from GitHub.")
+rfc_model_rf_rfe = joblib.load('models/ufc_model_rf_rfe.pkl')
 
 #list of features
 selected_features = ['age_at_diagnosis', 'nottingham_prognostic_index',
