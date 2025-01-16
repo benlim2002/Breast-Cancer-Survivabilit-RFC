@@ -27,16 +27,12 @@ github_url = "https://github.com/benlim2002/Breast-Cancer-Survivabilit-RFC/blob/
 response = requests.get(github_url)
 
 if response.status_code == 200:
-    # Load the model from the response content
     model_data = BytesIO(response.content)
-    rfc_model_rf_rfe = joblib.load(model_data)
-    st.success("Model loaded successfully!")
     try:
-        model_data = joblib.load('rfc_model_rf_rfe.pkl')
-        logging.info("Model loaded successfully!")
-    except KeyError as e:
-        logging.error(f"KeyError occurred: {e}")
-        raise
+        rfc_model_rf_rfe = joblib.load(model_data)
+        st.success("Model loaded successfully!")
+    except Exception as e:
+        st.error(f"Error loading the model: {e}")
 else:
     st.error("Failed to download the model file from GitHub.")
 
