@@ -26,8 +26,6 @@ github_url = "https://github.com/benlim2002/Breast-Cancer-Survivabilit-RFC/blob/
 # Fetch the .pkl file from GitHub
 response = requests.get(github_url)
 
-logging.basicConfig(level=logging.DEBUG)
-
 try:
     model_data = BytesIO(response.content)  # Fetching from GitHub
     logging.debug("Model data fetched successfully.")
