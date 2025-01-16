@@ -1,7 +1,7 @@
 pandas
 seaborn
-joblib
-scikit-learn
+joblib==1.4.2
+scikit-learn==1.6.0
 streamlit
 numpy
 matplotlib
