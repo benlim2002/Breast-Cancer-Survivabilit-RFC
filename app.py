@@ -20,7 +20,7 @@ import requests
 from io import BytesIO
 
 # GitHub raw file URL (make sure to replace with your own URL)
-github_url = "https://raw.githubusercontent.com/username/repository/branch/path/to/rfc_model_rf_rfe.pkl"
+github_url = "https://github.com/benlim2002/Breast-Cancer-Survivabilit-RFC/blob/main/%20rfc_model_rf_rfe.pkl"
 
 # Fetch the .pkl file from GitHub
 response = requests.get(github_url)
