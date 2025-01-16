@@ -6,4 +6,4 @@ streamlit
 numpy
 matplotlib
 scipy
-yaml
+PyYAML
