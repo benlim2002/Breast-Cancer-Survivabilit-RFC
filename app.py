@@ -16,14 +16,22 @@ from sklearn.feature_selection import RFE
 from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier
 import yaml
+import requests
+from io import BytesIO
 
+# GitHub raw file URL (make sure to replace with your own URL)
+github_url = "https://raw.githubusercontent.com/username/repository/branch/path/to/rfc_model_rf_rfe.pkl"
 
-#load model
-uploaded_file = st.file_uploader("Upload Model", type=["pkl"])
-if uploaded_file is not None:
-    rfc_model_rf_rfe = joblib.load(uploaded_file)
-  
-rfc_model_rf_rfe = joblib.load("rfc_model_rf_rfe.pkl")
+# Fetch the .pkl file from GitHub
+response = requests.get(github_url)
+
+if response.status_code == 200:
+    # Load the model from the response content
+    model_data = BytesIO(response.content)
+    rfc_model_rf_rfe = joblib.load(model_data)
+    st.success("Model loaded successfully!")
+else:
+    st.error("Failed to download the model file from GitHub.")
 
 #list of features
 selected_features = ['age_at_diagnosis', 'nottingham_prognostic_index',
