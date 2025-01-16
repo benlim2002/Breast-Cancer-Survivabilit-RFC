@@ -20,10 +20,6 @@ import requests
 from io import BytesIO
 
 
-st.write(f"Streamlit version: {st.__version__}")
-st.write(f"scikit-learn version: {sklearn.__version__}")
-st.write(f"joblib version: {joblib.__version__}")
-
 # GitHub raw file URL (make sure to replace with your own URL)
 github_url = "https://github.com/benlim2002/Breast-Cancer-Survivabilit-RFC/blob/main/%20rfc_model_rf_rfe.pkl"
 
