@@ -1,0 +1,32 @@
+data_directory: ./data/
+base_url: https://www.cbioportal.org/api/
+clinical_data: METABRIC.csv
+mutation_data: METABRIC_RNA_Mutation.csv
+model_directory: ./models/
+models:
+    model_1:
+        name: Support Vector Classifier
+        filename: support_vector_machine.joblib
+        param_grid:
+            C: [0.1, 10]
+            gamma: [0.1, 0.01]
+    model_2:
+        name: Random Forest Classifier
+        filename: random_forest.joblib
+        param_grid:
+            max_depth: [8, 10]
+            n_estimators: [50, 100]
+    model_3:
+        name: "Deep Neural Network"
+        filename: "dnn_model.h5"
+        dnn_config:
+            input_units: 128  # Adjust as needed
+            hidden_units: [64, 32]  # Adjust layer sizes as needed
+            dropout: 0.2  # Adjust dropout rate as needed
+            output_units: 1  # For binary classification, adjust if multi-class
+            output_activation: "sigmoid"  # "softmax" for multi-class classification
+            optimizer: "adam"  # Adjust optimizer as needed
+            loss: "binary_crossentropy"  # "categorical_crossentropy" for multi-class
+            epochs: 50
+            batch_size: 32
+test_split: 0.30
